@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import modelo.Casilla;
@@ -17,6 +18,8 @@ public class ParaBuscaminasUI extends BuscaminasUI{
     JButton casillita = null;
  	Tablero tablero = new Tablero(Dificultad.MEDIO);
  	Casilla casilla = new Casilla();
+ 	protected ImageIcon perdedor = new ImageIcon(getClass().getResource("/assets/neh.png")); //esto es para el boton de reinicio
+ 	//pero primero centremonos en que funcione lo demas y ya veremos si hay tiempo de eso
  	
  	
 	
@@ -38,6 +41,11 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 					public void actionPerformed(ActionEvent arg0) {
 						
 						new Desvelador(tablero).desvelarCasilla((JButton) arg0.getSource());
+						if(tablero.isPerdedor()){
+							
+								
+							
+						}
 //						comprobar ganador
 
 					}
