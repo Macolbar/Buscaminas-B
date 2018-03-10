@@ -9,6 +9,8 @@ import utiles.Utiles;
 
 public class Tablero implements AccionesTablero {
 	private Casilla[][] casillas;
+	boolean ganador = false;
+	boolean perdedor = false;
 	
 
 	public Casilla[][] getCasillas() {
@@ -165,6 +167,25 @@ public class Tablero implements AccionesTablero {
 				&& !casillas[lugar.getPosX()][lugar.getPosY()].isMina())
 			retorno = true;
 		return retorno;
+	}
+	
+	
+	
+	
+	public boolean isGanador() {
+		return ganador;
+	}
+
+	public void setGanador(boolean ganador) {
+		this.ganador = ganador;
+	}
+
+	public boolean isPerdedor() {
+		return perdedor;
+	}
+
+	public void setPerdedor(boolean perdedor) {
+		this.perdedor = perdedor;
 	}
 
 }

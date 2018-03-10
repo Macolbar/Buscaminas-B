@@ -15,9 +15,10 @@ import vista.BuscaminasUI;
 
 public class ParaBuscaminasUI extends BuscaminasUI{
     JButton casillita = null;
-	Buscaminas coco = new Buscaminas();
  	Tablero tablero = new Tablero(Dificultad.MEDIO);
  	Casilla casilla = new Casilla();
+ 	
+ 	
 	
 	public ParaBuscaminasUI(){
 		
@@ -29,6 +30,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 					public void mousePressed(MouseEvent e) {
 						if (e.getButton() == MouseEvent.BUTTON3)
 							new Marcador().marcarCasilla((JButton) e.getSource(), tablero);
+						
 					}
 				});
 

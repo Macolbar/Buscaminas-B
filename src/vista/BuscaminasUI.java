@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import control.MyActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +22,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.ImageIcon;
+
 import utiles.Utiles;
 
 public class BuscaminasUI extends JFrame {

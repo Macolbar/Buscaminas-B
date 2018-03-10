@@ -2,6 +2,7 @@ package control;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import modelo.Casilla;
@@ -11,6 +12,7 @@ import utiles.Utiles;
 
 public class Desvelador{
 	Tablero tablero;
+	protected ImageIcon fin = new ImageIcon(getClass().getResource("/assets/neh.png"));
 	
 	public Desvelador(Tablero tablero) {
 		super();
@@ -34,6 +36,8 @@ public class Desvelador{
 					casillita.setText("x");
 					casillita.setOpaque(true);
 					casillita.setBackground(Color.RED);
+					tablero.setPerdedor(true);
+					
 					
 				
 			}else{
