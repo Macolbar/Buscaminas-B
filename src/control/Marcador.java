@@ -1,5 +1,6 @@
 package control;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import modelo.Casilla;
@@ -9,6 +10,7 @@ import modelo.Tablero;
 public class Marcador { // voy a hacer lo mismo con el marcador(y quito la interface porque si no no me deja
 	//poner el Jbutton
 
+	protected ImageIcon bandera = new ImageIcon(getClass().getResource("/assets/bandera.png"));
 	
 	public void marcarCasilla(JButton casillita, Tablero tablero) {
 		Coordenada coordenada = Convertidor.convertirACoordenada(casillita);
@@ -20,10 +22,10 @@ public class Marcador { // voy a hacer lo mismo con el marcador(y quito la inter
 		if(casilla.isOculta()){
 			casilla.setMarcada(!casilla.isMarcada());
 			if(casilla.isMarcada()){
-				casillita.setText("B");
+				casillita.setIcon(bandera);
 			}
 			else{
-				casillita.setText("");
+				casillita.setIcon(null);
 			}
 		}
 		

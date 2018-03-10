@@ -13,6 +13,8 @@ import utiles.Utiles;
 public class Desvelador{
 	Tablero tablero;
 	protected ImageIcon fin = new ImageIcon(getClass().getResource("/assets/neh.png"));
+	protected ImageIcon mina = new ImageIcon(getClass().getResource("/assets/mina.jpg"));
+	
 	
 	public Desvelador(Tablero tablero) {
 		super();
@@ -21,32 +23,32 @@ public class Desvelador{
 	
 	public void desocultar(JButton botoncito){
 		Coordenada coordenada = Convertidor.convertirACoordenada(botoncito);
-		Casilla casilla = new Casilla();
-		casilla.setCoordenada(coordenada);
-		casilla = tablero.getCasilla(coordenada);
+		Casilla casilla = tablero.getCasilla(coordenada);
+		
 		if(casilla.isOculta()){
 			casilla.setOculta(false);
 			botoncito.setOpaque(true);
-		}
+		
 		
 		if (casilla.getAlrededor() > 0) {
-
-			botoncito.setText(Integer.toString(casilla.getAlrededor()));
+			
+			botoncito.setText(casilla.getTextoAlrededor());
 			casilla.setOculta(false);
 			botoncito.setBackground(Color.GRAY);
 			botoncito.setOpaque(true);
 			
-			//.setText(casilla.getTextoAlrededor());
 		}else{
-			botoncito.setText(Integer.toString(casilla.getAlrededor()));
+			botoncito.setText("");
 			casilla.setOculta(false);
 			botoncito.setBackground(Color.GRAY);
 			botoncito.setOpaque(true);
 		}
-	
+		}
 	if(casilla.isMina()){
-		
-		botoncito.setText("x");
+		if(casilla.isMarcada()){
+			botoncito.setIcon(null);
+		}
+		botoncito.setIcon(Utiles.createScaledIcon(mina, botoncito.getHeight()));
 		botoncito.setOpaque(true);
 		botoncito.setBackground(Color.RED);
 		casilla.setOculta(false);
@@ -61,9 +63,7 @@ public class Desvelador{
 	
 	public void desvelarCasilla(JButton casillita) {
 		Coordenada coordenada = Convertidor.convertirACoordenada(casillita);
-		Casilla casilla = new Casilla();
-		casilla.setCoordenada(coordenada);
-		casilla = tablero.getCasilla(coordenada);
+		Casilla casilla = tablero.getCasilla(coordenada);
 		assert casilla!=null:"casilla no valida";
 		// TODO llamamos a la casilla pero tambien al *tablero*         //contar las minas que faltan por descubrir, tablero.minas con marcador
 		//porque el tablero debe buscar recursivamente las casillas a desvelar
@@ -81,10 +81,11 @@ public class Desvelador{
 			}
 		}	
 	
+	
 
 
 
-	private void desvelarContigua(JButton casillita,Coordenada coordenada,Casilla casilla) {
+	/*private void desvelarContigua(JButton casillita,Coordenada coordenada,Casilla casilla) {
 		casilla.setOculta(false);
 		casillita.setOpaque(true);
 		casillita.setBackground(Color.GRAY);
@@ -105,7 +106,7 @@ public class Desvelador{
 			}
 		}
 		
-	}
+	}*/
 
 
 

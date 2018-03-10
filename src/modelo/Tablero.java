@@ -3,11 +3,12 @@ package modelo;
 
 import javax.naming.event.NamespaceChangeListener;
 
+
 import modelo.Casilla;
 import modelo.Coordenada;
 import utiles.Utiles;
 
-public class Tablero implements AccionesTablero {
+public class Tablero {
 	private Casilla[][] casillas;
 	boolean ganador = false;
 	boolean perdedor = false;
@@ -52,22 +53,17 @@ public class Tablero implements AccionesTablero {
 	
 
 	
-	@Override
-	public void calcularMinasAlrededor() {
+	public void calcularMinasAlrededor(Tablero tablero) {
 		// TODO recorrer el panel donde hay mina y colocar un incremento
 		// de una mina alrededor de ella
-		for (int i = 0; i < casillas.length; i++) {
-			for (int j = 0; j < casillas[i].length; j++) {
-				if (!casillas[i][j].isMina()) {
-					// VIVA el hardcode
-					for (int j2 = 0; j2 < Utiles.OCHO; j2++) {
-						Coordenada alrededor = crearCoordenadaAlrededor(i, j, j2);
-						if (isInToLimits(alrededor)) {
-							// ¿que nos preguntamos para incrementar en uno el
-							// numero de minas alrededor de esta casilla
-							if (!casillas[alrededor.getPosX()][alrededor.getPosY()].isMina()) {
-								casillas[alrededor.getPosX()][alrededor.getPosY()].setAlrededor();
-							}
+		for (int i = 0; i < Utiles.DIEZ; i++) {
+			for (int j = 0; j < Utiles.DIEZ; j++) {
+				if (tablero.getCasilla(new Coordenada(i, j)).isMina()) {
+					Coordenada coordenada[] = new Utiles().damePosicionAlrededor(i, j);
+					Coordenada validas[] = new Utiles().validaContiguas(coordenada, casillas.length - 1);
+					for (int k = 0; k < validas.length; k++) {
+						if (!tablero.getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).isMina()) {
+							tablero.getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).setAlrededor();
 						}
 					}
 				}
@@ -80,7 +76,7 @@ public class Tablero implements AccionesTablero {
 	 * lugar
 	 * 
 	 */
-	public Coordenada crearCoordenadaAlrededor(int i, int j, int lugar) {
+	/*public Coordenada crearCoordenadaAlrededor(int i, int j, int lugar) {
 		Coordenada desplazamiento = Utiles.damePosicionAlrededor(lugar);
 		// ¿Que nos estamos preguntando?
 		int posX = i + desplazamiento.getPosX();
@@ -94,7 +90,7 @@ public class Tablero implements AccionesTablero {
 
 	public boolean isInside(Coordenada pos, int upperLimitRow) {
 		return pos.getPosX() >= 0 && pos.getPosX() <= upperLimitRow;
-	}
+	}*/
 
 	public boolean colocarMina(int x, int y) {
 		// no se debe acceder directamente a las propiedades de otra clase
@@ -105,7 +101,7 @@ public class Tablero implements AccionesTablero {
 
 	
 
-	@Override
+	/*
 	public void desvelarContigua(Coordenada casilla) {
 		// lo que hay que hacer siempre
 		// es velar una casilla
@@ -130,7 +126,7 @@ public class Tablero implements AccionesTablero {
 	public byte getAlrededor(Coordenada lugar) {
 		
 		return casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor();
-	}
+	}*/
 
 	public boolean isMarcada(Coordenada posicion) {
 		return casillas[posicion.getPosX()][posicion.getPosY()].isMarcada();
@@ -151,7 +147,7 @@ public class Tablero implements AccionesTablero {
 	 * @param lugar
 	 * @return
 	 */
-	public boolean comprobarMarcadas(Coordenada lugar) {
+	/*public boolean comprobarMarcadas(Coordenada lugar) {
 		int contador = 0;
 		// es contar cuantas casilla marcadas rodean a la actual
 		for (int i = 0; i < Utiles.OCHO; i++) {
@@ -167,7 +163,7 @@ public class Tablero implements AccionesTablero {
 				&& !casillas[lugar.getPosX()][lugar.getPosY()].isMina())
 			retorno = true;
 		return retorno;
-	}
+	}*/
 	
 	
 	
@@ -187,5 +183,7 @@ public class Tablero implements AccionesTablero {
 	public void setPerdedor(boolean perdedor) {
 		this.perdedor = perdedor;
 	}
+
+	
 
 }
