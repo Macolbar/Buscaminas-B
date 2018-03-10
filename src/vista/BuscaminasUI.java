@@ -34,6 +34,12 @@ public class BuscaminasUI extends JFrame {
 	protected ImageIcon bandera = new ImageIcon(getClass().getResource("/assets/bandera.png"));
 	protected ImageIcon sonrisa = new ImageIcon(getClass().getResource("/assets/sonrisa.png"));
 	protected ImageIcon mina = new ImageIcon(getClass().getResource("/assets/mina.jpg"));
+	protected JButton btnReboot;
+	protected JMenuBar menuBar;
+	protected JMenu mnDificultad;
+	protected JMenuItem mntmFcil;
+	protected JMenuItem mntmMedio;
+	protected JMenuItem mntmDifcil;
 
 	/**
 	 * Launch the application.
