@@ -9,7 +9,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 		for (int i = 0; i < botones.length; i++) {
 			for (int j = 0; j < botones[i].length; j++) {
 				botones[i][j].setEnabled(true);
-//				ponerMalditosTextos(false);
+
 			}
 		}
 	}
