@@ -102,18 +102,7 @@ public class Tablero implements AccionesTablero {
 		return casillas[x][y].colocaMina();
 	}
 
-	public boolean desvelarCasilla(Casilla casilla) {
-		// TODO metodo reecursivo que a partir de un casilla desvelada (hay que
-		// saber cual es dentro del tablero) develada todas las de alrededor y
-		// sucesivas que tengan
-		// un valor de 0 minas alrededor
-		
-		//una casilla, hay que ver si no es una con mina, los estados, que este o no desvelada ya, etc
-		
-		
-		
-		return false;
-	}
+	
 
 	@Override
 	public void desvelarContigua(Coordenada casilla) {
@@ -137,6 +126,7 @@ public class Tablero implements AccionesTablero {
 	}
 
 	public byte getAlrededor(Coordenada lugar) {
+		
 		return casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor();
 	}
 
@@ -159,7 +149,7 @@ public class Tablero implements AccionesTablero {
 	 * @param lugar
 	 * @return
 	 */
-	private boolean comprobarMarcadas(Coordenada lugar) {
+	public boolean comprobarMarcadas(Coordenada lugar) {
 		int contador = 0;
 		// es contar cuantas casilla marcadas rodean a la actual
 		for (int i = 0; i < Utiles.OCHO; i++) {

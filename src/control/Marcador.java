@@ -10,12 +10,12 @@ public class Marcador { // voy a hacer lo mismo con el marcador(y quito la inter
 	//poner el Jbutton
 
 	
-	public boolean marcarCasilla(Tablero tablero, JButton casillita) {
+	public boolean marcarCasilla(JButton casillita, Tablero tablero) {
 		Coordenada coordenada = Convertidor.convertirACoordenada(casillita);
-		Casilla casilla = tablero.getCasilla(coordenada); //no sirve, (si funciona) pero lo dejo por si acaso
-		
+		Casilla casilla = new Casilla();
+		casilla.setCoordenada(coordenada);
+		casilla = tablero.getCasilla(coordenada);
 		assert casilla!=null:"casilla no valida";
-		
 		return casilla.marcaCasilla();
 	}
 

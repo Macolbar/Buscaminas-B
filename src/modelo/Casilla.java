@@ -11,8 +11,8 @@ public class Casilla {
 		return oculta;
 	}
 
-	public void setOculta(boolean velada) {
-		this.oculta = velada;
+	public void setOculta(boolean oculta) {
+		this.oculta = oculta;
 	}
 
 	public boolean isMarcada() {
@@ -46,12 +46,28 @@ public class Casilla {
 		this.mina = mina;
 	}
 
-	public byte getAlrededor() {
+	public String getTextoAlrededor() {
+		String minitas = new String();
+		minitas= ""+alrededor;
+		return minitas;
+	}
+	
+	public byte getAlrededor(){
 		return alrededor;
 	}
 
 	public void setAlrededor(byte alrededor) {
 		this.alrededor = alrededor;
+	}
+
+
+
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+
+	public void setCoordenada(Coordenada coordenada) {
+		this.coordenada = coordenada;
 	}
 
 	public boolean marcaCasilla() {
@@ -60,14 +76,6 @@ public class Casilla {
 			marcada = true;
 		}
 		return marcada;
-	}
-
-	public Coordenada getCoordenada() {
-		return coordenada;
-	}
-
-	public void setCoordenada(Coordenada coordenada) {
-		this.coordenada = coordenada;
 	}
 
 }
