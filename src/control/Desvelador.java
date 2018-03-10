@@ -19,6 +19,44 @@ public class Desvelador{
 		this.tablero = tablero;
 	}
 	
+	public void desocultar(JButton botoncito){
+		Coordenada coordenada = Convertidor.convertirACoordenada(botoncito);
+		Casilla casilla = new Casilla();
+		casilla.setCoordenada(coordenada);
+		casilla = tablero.getCasilla(coordenada);
+		if(casilla.isOculta()){
+			casilla.setOculta(false);
+			botoncito.setOpaque(true);
+		}
+		
+		if (casilla.getAlrededor() > 0) {
+
+			botoncito.setText(Integer.toString(casilla.getAlrededor()));
+			casilla.setOculta(false);
+			botoncito.setBackground(Color.GRAY);
+			botoncito.setOpaque(true);
+			
+			//.setText(casilla.getTextoAlrededor());
+		}else{
+			botoncito.setText(Integer.toString(casilla.getAlrededor()));
+			casilla.setOculta(false);
+			botoncito.setBackground(Color.GRAY);
+			botoncito.setOpaque(true);
+		}
+	
+	if(casilla.isMina()){
+		
+		botoncito.setText("x");
+		botoncito.setOpaque(true);
+		botoncito.setBackground(Color.RED);
+		casilla.setOculta(false);
+		tablero.setPerdedor(true);
+	}
+		
+	
+}
+		
+	
 
 	
 	public void desvelarCasilla(JButton casillita) {
@@ -31,30 +69,18 @@ public class Desvelador{
 		//porque el tablero debe buscar recursivamente las casillas a desvelar
 		
 		if(casilla.isOculta()&&!casilla.isMarcada()){
-			if(casilla.isMina()){
-				
-					casillita.setText("x");
-					casillita.setOpaque(true);
-					casillita.setBackground(Color.RED);
-					casilla.setOculta(false);
-					tablero.setPerdedor(true);
-					
-					
-				
-			}else{
+			
 				if(casilla.getAlrededor()>0){
-					casilla.setOculta(false);
-					casillita.setOpaque(true);
-					casillita.setText(casilla.getTextoAlrededor());
+					desocultar(casillita);
 				}else{
-					desvelarContigua(casillita, coordenada, casilla);
+					desocultar(casillita);
 				}
 				
 				
 				
 			}
 		}	
-	}
+	
 
 
 

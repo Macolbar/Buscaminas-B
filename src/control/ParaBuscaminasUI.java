@@ -13,6 +13,7 @@ import javax.swing.JToggleButton;
 import modelo.Casilla;
 import modelo.Dificultad;
 import modelo.Tablero;
+import utiles.Utiles;
 import vista.BuscaminasUI;
 
 public class ParaBuscaminasUI extends BuscaminasUI{
@@ -43,7 +44,13 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 					}
 					if(tablero.isPerdedor()){
 						contenedor.setBackground(Color.RED);
-							
+						
+							for (int i = 0; i < Utiles.DIEZ; i++) {
+								for (int j = 0; j < Utiles.DIEZ; j++) {
+									new Desvelador(tablero).desvelarCasilla(botones[i][j]);
+								}
+							}
+						
 						
 					}
 					
@@ -59,16 +66,41 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 			}
 			}
 
+				/*botones[i][j].addMouseListener(new MouseAdapter() {
+
+					public void mousePressed(MouseEvent e) {
+						if (e.getButton() == MouseEvent.BUTTON3)
+							new Marcador().marcarCasilla((JButton) e.getSource(), tablero);
+						
+					}
+				});
+
+				botones[i][j].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						new Desvelador(tablero).desvelarCasilla((JButton) arg0.getSource());
+						if (tablero.isGanador()) {
+							
+							
+						}
+						if(tablero.isPerdedor()){
+							contenedor.setBackground(Color.RED);
+								
+							
+						}
+//						comprobar ganador
+
+					}
+				});
+			}
+		}*/
+	
 		
+
+	
+
 	
    }
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
@@ -86,33 +118,4 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 		}
 		
 	}*/
-	
-	/*botones[i][j].addMouseListener(new MouseAdapter() {
-
-	public void mousePressed(MouseEvent e) {
-		if (e.getButton() == MouseEvent.BUTTON3)
-			new Marcador().marcarCasilla((JButton) e.getSource(), tablero);
-		
-	}
-});
-
-botones[i][j].addActionListener(new ActionListener() {
-	public void actionPerformed(ActionEvent arg0) {
-		
-		new Desvelador(tablero).desvelarCasilla((JButton) arg0.getSource());
-		if (tablero.isGanador()) {
-			
-			
-		}
-		if(tablero.isPerdedor()){
-			contenedor.setBackground(Color.RED);
-				
-			
-		}
-//		comprobar ganador
-
-	}
-});
-}
-}*/
 }
