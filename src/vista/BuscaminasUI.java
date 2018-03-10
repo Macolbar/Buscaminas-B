@@ -28,7 +28,7 @@ import utiles.Utiles;
 public class BuscaminasUI extends JFrame {
 
 	protected boolean oculta = true;
-	private JPanel contenedor;
+	public JPanel contenedor;
 	private int tamaño=10;
 	protected JButton[][] botones = new JButton[tamaño][tamaño];
 	protected ImageIcon bandera = new ImageIcon(getClass().getResource("/assets/bandera.png"));

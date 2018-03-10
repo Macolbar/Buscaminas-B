@@ -36,6 +36,7 @@ public class Desvelador{
 					casillita.setText("x");
 					casillita.setOpaque(true);
 					casillita.setBackground(Color.RED);
+					casilla.setOculta(false);
 					tablero.setPerdedor(true);
 					
 					

@@ -20,4 +20,6 @@ public class Utiles {
 		return new ImageIcon(Imagen.getImage().getScaledInstance(height - 2, height - 2, Image.SCALE_SMOOTH));
 
 	}
+	
+	
 }

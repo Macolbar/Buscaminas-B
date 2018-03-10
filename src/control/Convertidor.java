@@ -12,8 +12,6 @@ public class Convertidor {
 	
 		int x=Integer.parseInt(coordenada[0]);
 		int y=Integer.parseInt(coordenada[1]);
-		
-		Casilla casilla = new Casilla();
 	
 
 	return new Coordenada(x,y);
