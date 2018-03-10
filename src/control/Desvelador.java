@@ -16,18 +16,20 @@ public class Desvelador{
 	
 
 	
-	public boolean desvelarCasilla(Tablero tablero, JButton casillita) {
+	public void desvelarCasilla(Tablero tablero, JButton casillita) {
 		Coordenada coordenada = Convertidor.convertirACoordenada(casillita);
-		Casilla casilla = tablero.getCasilla(coordenada);
+		Casilla casilla = tablero.getCasilla(coordenada); //no sirve, (si funciona) pero lo dejo por si acaso
 		
 		assert casilla!=null:"casilla no valida";
 		// TODO llamamos a la casilla pero tambien al *tablero*         //contar las minas que faltan por descubrir, tablero.minas con marcador
 		//porque el tablero debe buscar recursivamente las casillas a desvelar
 		
+		tablero.desvelarContigua(coordenada);
 		
 		
 		
-		return tablero.desvelarCasilla(casilla);
+		
+		
 	}
 
 }

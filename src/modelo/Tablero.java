@@ -108,10 +108,8 @@ public class Tablero implements AccionesTablero {
 		// sucesivas que tengan
 		// un valor de 0 minas alrededor
 		
-		//una casilla, hay que ver si no es una con mina
-		if(casilla.isMina()){
-			
-		}
+		//una casilla, hay que ver si no es una con mina, los estados, que este o no desvelada ya, etc
+		
 		
 		
 		return false;
