@@ -10,7 +10,7 @@ import modelo.Tablero;
 import vista.BuscaminasUI;
 
 public class ParaBuscaminasUI extends BuscaminasUI{
- 	Buscaminas mimi = new Buscaminas();
+ 	Buscaminas coco = new Buscaminas();
  	Tablero control = new Tablero(null);
 	
 	public ParaBuscaminasUI(){
@@ -27,10 +27,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 					case 1:
 //						System.out.println("boton izquierda");
 //						getAlrededor() 
-						
 						pulsado.setBackground(Color.GRAY);
-						
-		
 						pulsado.setText("5");
 						oculta = !oculta;
 						

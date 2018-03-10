@@ -105,7 +105,7 @@ public class Tablero implements AccionesTablero {
 		
 		//una casilla, hay que ver si no es una con mina
 		if(casilla.isMina()){
-			//mirar varios en git
+			
 		}
 		
 		
