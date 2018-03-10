@@ -30,7 +30,7 @@ public class MyActionListener implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		// pone el action listener dependiendo del boton que sea
 		if (((JButton) e.getSource()).getName() == "btnReboot") {
-			paraBuscaminasUI.rebootGame();
+//			paraBuscaminasUI.rebootGame();
 		}
 	}
 	

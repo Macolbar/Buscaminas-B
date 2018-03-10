@@ -27,7 +27,7 @@ import utiles.Utiles;
 
 public class BuscaminasUI extends JFrame {
 
-	private boolean oculta = true;
+	protected boolean oculta = true;
 	private JPanel contenedor;
 	private int tamaño=10;
 	protected JButton[][] botones = new JButton[tamaño][tamaño];
@@ -107,41 +107,6 @@ public class BuscaminasUI extends JFrame {
 			for (int j = 0; j < botones.length; j++) {
 				botones[i][j] = new JButton();
 				botones[i][j].setBackground(Color.getHSBColor(234, 243, 92));
-				
-				botones[i][j].addMouseListener(new MouseAdapter(){
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						JButton pulsado = (JButton) e.getSource();
-						switch (e.getButton()) {
-						case 1:
-//							System.out.println("boton izquierda");
-//							getAlrededor() 
-							
-							pulsado.setBackground(Color.GRAY);
-							
-			
-							pulsado.setText("5");
-							oculta = !oculta;
-							
-							break;
-						case 3:
-							// System.out.println("boton derecho");
-							if (oculta) {
-								// pulsado.setText("X");
-								pulsado.setIcon(bandera);
-							} else {
-								// pulsado.setText("");
-								
-								pulsado.setIcon(null);
-								
-							}
-							
-							break;
-						}
-					}
-				});
-				
-				
 				panel.add(botones[i][j]);
 				botones[i][j].setName(i+","+j);
 				 

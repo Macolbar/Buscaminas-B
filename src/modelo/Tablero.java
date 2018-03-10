@@ -9,6 +9,7 @@ import utiles.Utiles;
 
 public class Tablero implements AccionesTablero {
 	private Casilla[][] casillas;
+	
 
 	public Casilla[][] getCasillas() {
 		return casillas;
