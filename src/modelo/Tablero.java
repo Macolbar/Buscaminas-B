@@ -15,6 +15,11 @@ public class Tablero implements AccionesTablero {
 		return casillas;
 	}
 	
+	public Casilla getCasilla(Coordenada coordenada) { //esto es para llamar a una casilla en concreto (Convertidor
+														//saca la coordenada del JButton y se identifica asi)
+		return casillas[coordenada.getPosX()][coordenada.getPosY()];
+	}
+	
 	public Tablero(Dificultad dificultad) {
 		super();
 		crearTablero(dificultad.getMinas());
@@ -24,7 +29,7 @@ public class Tablero implements AccionesTablero {
 		casillas = new Casilla[Utiles.DIEZ][Utiles.DIEZ];
 		for (int i = 0; i < casillas.length; i++) {
 			for (int j = 0; j < casillas[i].length; j++) {
-				casillas[i][j] = new Casilla();
+				casillas[i][j] = new Casilla(); 
 			}
 		}
 		

@@ -5,6 +5,7 @@ public class Casilla {
 	private byte alrededor = 0;
 	private boolean oculta = true;
 	private boolean marcada = false;
+	private Coordenada coordenada = null;
 
 	public boolean isOculta() {
 		return oculta;
@@ -59,6 +60,14 @@ public class Casilla {
 			marcada = true;
 		}
 		return marcada;
+	}
+
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+
+	public void setCoordenada(Coordenada coordenada) {
+		this.coordenada = coordenada;
 	}
 
 }
