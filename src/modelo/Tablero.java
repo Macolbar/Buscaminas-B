@@ -56,7 +56,7 @@ public class Tablero implements AccionesTablero {
 		// de una mina alrededor de ella
 		for (int i = 0; i < casillas.length; i++) {
 			for (int j = 0; j < casillas[i].length; j++) {
-				if (casillas[i][j].isMina()) {
+				if (!casillas[i][j].isMina()) {
 					// VIVA el hardcode
 					for (int j2 = 0; j2 < Utiles.OCHO; j2++) {
 						Coordenada alrededor = crearCoordenadaAlrededor(i, j, j2);
@@ -64,8 +64,7 @@ public class Tablero implements AccionesTablero {
 							// ¿que nos preguntamos para incrementar en uno el
 							// numero de minas alrededor de esta casilla
 							if (!casillas[alrededor.getPosX()][alrededor.getPosY()].isMina()) {
-								casillas[alrededor.getPosX()][alrededor.getPosY()].setAlrededor(
-										(byte) (getAlrededor(alrededor) + 1));
+								casillas[alrededor.getPosX()][alrededor.getPosY()].setAlrededor();
 							}
 						}
 					}
@@ -125,6 +124,7 @@ public class Tablero implements AccionesTablero {
 		}
 	}
 
+	
 	public byte getAlrededor(Coordenada lugar) {
 		
 		return casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor();
@@ -161,7 +161,7 @@ public class Tablero implements AccionesTablero {
 			}
 		}
 		boolean retorno = false;
-		if (contador == getAlrededor(lugar)
+		if (contador == casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor()
 				&& !casillas[lugar.getPosX()][lugar.getPosY()].isMina())
 			retorno = true;
 		return retorno;

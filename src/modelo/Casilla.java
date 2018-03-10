@@ -56,8 +56,8 @@ public class Casilla {
 		return alrededor;
 	}
 
-	public void setAlrededor(byte alrededor) {
-		this.alrededor = alrededor;
+	public void setAlrededor() {
+		this.alrededor += 1;
 	}
 
 

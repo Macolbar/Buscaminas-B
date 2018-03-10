@@ -56,7 +56,7 @@ public class Desvelador{
 	private void desvelarContigua(JButton casillita,Coordenada coordenada,Casilla casilla) {
 		casilla.setOculta(false);
 		casillita.setOpaque(true);
-		casillita.setText(casilla.getTextoAlrededor());
+		casillita.setBackground(Color.GRAY);
 		// comprobar si las casillas marcadas alrededor coincide con el
 		// numero de minas alrededor de la casilla
 		if (tablero.comprobarMarcadas(coordenada)) {
@@ -67,7 +67,7 @@ public class Desvelador{
 						&& !casilla.isMarcada()) {
 					casilla.setOculta(false);
 					casillita.setOpaque(true);
-					casillita.setText(casilla.getTextoAlrededor());
+					casillita.setText(""+tablero.getAlrededor(posicion));
 					if (casilla.getAlrededor() == 0)
 						desvelarContigua(casillita, posicion, casilla);
 				}
