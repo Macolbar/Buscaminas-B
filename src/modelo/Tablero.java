@@ -2,7 +2,7 @@ package modelo;
 
 
 import javax.naming.event.NamespaceChangeListener;
-
+import javax.swing.JButton;
 
 import modelo.Casilla;
 import modelo.Coordenada;
@@ -107,6 +107,10 @@ public class Tablero {
 		}
 	}
 
+	
+	
+	//ESTO FALTA: hay que hacer que cuando haya las mismas banderas que minas (no importa si estan en el mismo sitio)
+	//se desvele lo de alrededor(que por cierto lo del agua tp va muy bien). y si las has puesto mal, pierdes
 
 
 	/**
@@ -120,7 +124,8 @@ public class Tablero {
 		int contador = 0;
 		// es contar cuantas casilla marcadas rodean a la actual
 		for (int i = 0; i < Utiles.OCHO; i++) {
-			Coordenada coordenada[] = new Utiles().damePosicionAlrededor(lugar.getPosX(),lugar.getPosY());
+			new Utiles();
+			Coordenada coordenada[] = Utiles.damePosicionAlrededor(lugar.getPosX(),lugar.getPosY());
 			Coordenada validas[] = new Utiles().validaContiguas(coordenada, Utiles.DIEZ - 1);
 			
 				if (isMarcada(validas[i])) {
@@ -133,6 +138,25 @@ public class Tablero {
 				&& !casillas[lugar.getPosX()][lugar.getPosY()].isMina())
 			retorno = true;
 		return retorno;
+	}
+	
+	
+	
+public boolean comprobarGanador(JButton[][] botonera){
+		
+		boolean ganador=true;
+		for (int i = 0; i < botonera.length; i++) {
+			for (int j = 0; j < botonera.length; j++) {
+				new Utiles();
+				if(getCasilla(Utiles.convertirACoordenada(botonera[i][j])).isOculta()){
+					new Utiles();
+					if(!getCasilla(Utiles.convertirACoordenada(botonera[i][j])).isMina()){
+						ganador=false;
+					}
+				}
+			}
+		}
+		return ganador;
 	}
 	
 	

@@ -19,9 +19,9 @@ import vista.BuscaminasUI;
 public class ParaBuscaminasUI extends BuscaminasUI{
     JButton casillita = null;
     MyActionListener listener = new MyActionListener(this);
- 	Tablero tablero = new Tablero(Dificultad.MEDIO);
+ 	Tablero tablero = new Tablero(Dificultad.FACIL);
  	Casilla casilla = new Casilla();
-// 	protected ImageIcon ganador = new ImageIcon(getClass().getResource("/assets/ganador.png"));
+ 	protected ImageIcon ganador = new ImageIcon(getClass().getResource("/assets/ganador.png"));
  	protected ImageIcon perdedor = new ImageIcon(getClass().getResource("/assets/neh.png")); //esto es para el boton de reinicio
  	//pero primero centremonos en que funcione lo demas y ya veremos si hay tiempo de eso
  	
@@ -38,10 +38,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 				switch (e.getButton()) {
 				case 1:
 					new Desvelador(tablero).desvelarCasilla((JButton) e.getSource(), botones);
-					if (tablero.isGanador()) {
-						
-						
-					}
+					
 					if(tablero.isPerdedor()){
 						contenedor.setBackground(Color.RED);
 						//btnReboot.setIcon(perdedor);
@@ -53,6 +50,20 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 							}
 						
 						
+					}else{
+						if(tablero.comprobarGanador(botones)){
+							tablero.setGanador(true);
+						}
+					}
+					
+					if (tablero.isGanador()) {
+						contenedor.setBackground(Color.GREEN);
+						for (int i = 0; i < Utiles.DIEZ; i++) {
+							for (int j = 0; j < Utiles.DIEZ; j++) {
+								botones[i][j].setEnabled(false);
+							}
+						}
+						//btnReboot.setIcon(ganador);
 					}
 					
 					break;
@@ -68,6 +79,10 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 		
 			}
 			}
+		
+		
+		
+		
 
 				/*botones[i][j].addMouseListener(new MouseAdapter() {
 
