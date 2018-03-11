@@ -25,6 +25,7 @@ public class Tablero {
 	
 	public Tablero(Dificultad dificultad) {
 		super();
+		
 		crearTablero(dificultad.getMinas());
 	}
 
@@ -46,6 +47,7 @@ public class Tablero {
 				minas--;
 			}
 		}while(minas!=0);
+		calcularMinasAlrededor();
 		
 	}
 
@@ -53,17 +55,17 @@ public class Tablero {
 	
 
 	
-	public void calcularMinasAlrededor(Tablero tablero) {
+	public void calcularMinasAlrededor() {
 		// TODO recorrer el panel donde hay mina y colocar un incremento
 		// de una mina alrededor de ella
 		for (int i = 0; i < Utiles.DIEZ; i++) {
 			for (int j = 0; j < Utiles.DIEZ; j++) {
-				if (tablero.getCasilla(new Coordenada(i, j)).isMina()) {
+				if (getCasilla(new Coordenada(i, j)).isMina()) {
 					Coordenada coordenada[] = new Utiles().damePosicionAlrededor(i, j);
 					Coordenada validas[] = new Utiles().validaContiguas(coordenada, casillas.length - 1);
 					for (int k = 0; k < validas.length; k++) {
-						if (!tablero.getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).isMina()) {
-							tablero.getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).setAlrededor();
+						if (!getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).isMina()) {
+							getCasilla(new Coordenada(validas[k].getPosX(), validas[k].getPosY())).setAlrededor();
 						}
 					}
 				}
@@ -119,7 +121,7 @@ public class Tablero {
 		// es contar cuantas casilla marcadas rodean a la actual
 		for (int i = 0; i < Utiles.OCHO; i++) {
 			Coordenada coordenada[] = new Utiles().damePosicionAlrededor(lugar.getPosX(),lugar.getPosY());
-			Coordenada validas[] = new Utiles().validaContiguas(coordenada, casillas.length - 1);
+			Coordenada validas[] = new Utiles().validaContiguas(coordenada, Utiles.DIEZ - 1);
 			
 				if (isMarcada(validas[i])) {
 					contador++;

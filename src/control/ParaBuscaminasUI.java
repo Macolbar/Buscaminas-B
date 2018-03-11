@@ -59,6 +59,8 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 				case 3:
 					
 					new Marcador().marcarCasilla((JButton) e.getSource(), tablero);
+					
+					
 					break;
 				}
 			}
