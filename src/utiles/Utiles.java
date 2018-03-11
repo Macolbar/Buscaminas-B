@@ -21,6 +21,8 @@ public class Utiles {
 
 	return new Coordenada(x,y);
 }
+	
+	
 
 	public static Coordenada[] damePosicionAlrededor(int x, int y) {
 		Coordenada[] coordenadas = { new Coordenada(x - 1, y - 1), new Coordenada(x - 1, y),

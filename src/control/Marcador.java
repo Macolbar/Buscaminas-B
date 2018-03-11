@@ -23,10 +23,10 @@ public class Marcador { // voy a hacer lo mismo con el marcador(y quito la inter
 		if(casilla.isOculta()){
 			casilla.setMarcada(!casilla.isMarcada());
 			if(casilla.isMarcada()){
-				casillita.setIcon(bandera);
+				casillita.setText("X");
 			}
 			else{
-				casillita.setIcon(null);
+				casillita.setText("");
 			}
 		}
 		

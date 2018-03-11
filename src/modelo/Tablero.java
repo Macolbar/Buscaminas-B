@@ -71,26 +71,9 @@ public class Tablero {
 		}
 	}
 
-	/**
-	 * Crear la coordenada exacta con un posicion alrededor segun defina el
-	 * lugar
-	 * 
-	 */
-	/*public Coordenada crearCoordenadaAlrededor(int i, int j, int lugar) {
-		Coordenada desplazamiento = Utiles.damePosicionAlrededor(lugar);
-		// ¿Que nos estamos preguntando?
-		int posX = i + desplazamiento.getPosX();
-		int posY = j + desplazamiento.getPosY();
-		return new Coordenada(posX, posY);
-	}
 
-	public boolean isInToLimits(Coordenada pos) {
-		return isInside(pos, casillas.length) && isInside(pos, casillas[0].length);
-	}
 
-	public boolean isInside(Coordenada pos, int upperLimitRow) {
-		return pos.getPosX() >= 0 && pos.getPosX() <= upperLimitRow;
-	}*/
+
 
 	public boolean colocarMina(int x, int y) {
 		// no se debe acceder directamente a las propiedades de otra clase
@@ -101,7 +84,7 @@ public class Tablero {
 
 	
 
-	/*
+	
 	public void desvelarContigua(Coordenada casilla) {
 		// lo que hay que hacer siempre
 		// es velar una casilla
@@ -110,35 +93,19 @@ public class Tablero {
 		// numero de minas alrededor de la casilla
 		if (comprobarMarcadas(casilla)) {
 			for (int i = 0; i < Utiles.OCHO; i++) {
-				Coordenada posicion = crearCoordenadaAlrededor(casilla.getPosX(), casilla.getPosY(), i);
-				if (isInToLimits(posicion)
-						&& isOculta(posicion)
-						&& !isMarcada(posicion)) {
+				Coordenada coordenada[] = new Utiles().damePosicionAlrededor(casilla.getPosX(),casilla.getPosY());
+				Coordenada validas[] = new Utiles().validaContiguas(coordenada, casillas.length - 1);
+				if (isOculta(validas[i])
+						&& !isMarcada(validas[i])) {
 					setOculta(casilla);
 					if (getAlrededor(casilla) == 0)
-						desvelarContigua(posicion);
+						desvelarContigua(validas[i]);
 				}
 			}
 		}
 	}
 
-	
-	public byte getAlrededor(Coordenada lugar) {
-		
-		return casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor();
-	}*/
 
-	public boolean isMarcada(Coordenada posicion) {
-		return casillas[posicion.getPosX()][posicion.getPosY()].isMarcada();
-	}
-
-	public boolean isOculta(Coordenada posicion) {
-		return casillas[posicion.getPosX()][posicion.getPosY()].isOculta();
-	}
-
-	public void setOculta(Coordenada lugar) {
-		casillas[lugar.getPosX()][lugar.getPosY()].setOculta(false);
-	}
 
 	/**
 	 * Comporbar si el numero de casillas marcadas alrededor de una casilla
@@ -147,23 +114,24 @@ public class Tablero {
 	 * @param lugar
 	 * @return
 	 */
-	/*public boolean comprobarMarcadas(Coordenada lugar) {
+	public boolean comprobarMarcadas(Coordenada lugar) {
 		int contador = 0;
 		// es contar cuantas casilla marcadas rodean a la actual
 		for (int i = 0; i < Utiles.OCHO; i++) {
-			Coordenada posicion = crearCoordenadaAlrededor(lugar.getPosX(), lugar.getPosY(), i);
-			if (isInToLimits(posicion)) {
-				if (isMarcada(posicion)) {
+			Coordenada coordenada[] = new Utiles().damePosicionAlrededor(lugar.getPosX(),lugar.getPosY());
+			Coordenada validas[] = new Utiles().validaContiguas(coordenada, casillas.length - 1);
+			
+				if (isMarcada(validas[i])) {
 					contador++;
 				}
-			}
+			
 		}
 		boolean retorno = false;
 		if (contador == casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor()
 				&& !casillas[lugar.getPosX()][lugar.getPosY()].isMina())
 			retorno = true;
 		return retorno;
-	}*/
+	}
 	
 	
 	
@@ -183,7 +151,30 @@ public class Tablero {
 	public void setPerdedor(boolean perdedor) {
 		this.perdedor = perdedor;
 	}
+	
+	
+	
+	
+	/*yo a esto apenas le hago caso, llamo directamente desde las casillas, creo que solo lo uso aqui
+	
+	tablero.getCasilla(Coordenada); ..*/
+	
+	public byte getAlrededor(Coordenada lugar) {
+		
+		return casillas[lugar.getPosX()][lugar.getPosY()].getAlrededor();
+	}
 
+	public boolean isMarcada(Coordenada posicion) {
+		return casillas[posicion.getPosX()][posicion.getPosY()].isMarcada();
+	}
+
+	public boolean isOculta(Coordenada posicion) {
+		return casillas[posicion.getPosX()][posicion.getPosY()].isOculta();
+	}
+
+	public void setOculta(Coordenada lugar) {
+		casillas[lugar.getPosX()][lugar.getPosY()].setOculta(false);
+	}
 	
 
 }

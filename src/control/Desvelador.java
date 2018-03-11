@@ -60,7 +60,8 @@ public class Desvelador{
 		
 	
 
-	
+	//este es el que conecta el metodo de arriba con el de abajo.
+	//Hay que llamar al metodo que pone las minas o estara de adorno pero no se donde
 	public void desvelarCasilla(JButton casillita, JButton[][] botonera) {
 		Coordenada coordenada = Utiles.convertirACoordenada(casillita);
 		Casilla casilla = tablero.getCasilla(coordenada);
@@ -84,7 +85,8 @@ public class Desvelador{
 	
 
 
-
+	//si se supone que esto deberia desvelar todo el agua, no, no lo hace. Lo que si hace es desvelar las de alrededor si no hay mina.
+	//close enough
 	private void desvelarContigua(Coordenada coordenada, JButton[][] botonera) {
 		Coordenada coordenadaCasilla = new Utiles().convertirACoordenada(botonera[coordenada.getPosX()][coordenada.getPosY()]);
 		Coordenada coordenadas[] = new Utiles().damePosicionAlrededor(coordenadaCasilla.getPosX(), coordenadaCasilla.getPosY());
@@ -93,13 +95,23 @@ public class Desvelador{
 			desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
 
 		} else {
-			desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
 			for (int i = 0; i < coordenadasValidas.length; i++) {
-				desvelarContigua(new Coordenada(coordenadasValidas[i].getPosX(), coordenadasValidas[i].getPosY()), botonera);
+				for (int j = 0; j < coordenadasValidas.length; j++) {
+					Casilla casilla = tablero.getCasilla(coordenadasValidas[i]);
+					if(!casilla.isMina()){
+						desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
+						desocultar(botonera[coordenadasValidas[i].getPosX()][coordenadasValidas[i].getPosY()]);
+					}else{
+						desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
+					}
+				}
 			}
+			
 		}
 
 	}
+	
+	
 	
 	
 

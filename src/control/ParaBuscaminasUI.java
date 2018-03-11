@@ -44,6 +44,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 					}
 					if(tablero.isPerdedor()){
 						contenedor.setBackground(Color.RED);
+						//btnReboot.setIcon(perdedor);
 						
 							for (int i = 0; i < Utiles.DIEZ; i++) {
 								for (int j = 0; j < Utiles.DIEZ; j++) {
