@@ -46,6 +46,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 							for (int i = 0; i < Utiles.DIEZ; i++) {
 								for (int j = 0; j < Utiles.DIEZ; j++) {
 									new Desvelador(tablero).desvelarCasilla(botones[i][j], botones);
+									botones[i][j].setEnabled(false);
 								}
 							}
 						
