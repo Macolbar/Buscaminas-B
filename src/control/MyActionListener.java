@@ -27,7 +27,7 @@ public class MyActionListener implements ActionListener, MouseListener {
 //			paraBuscaminasUI.rebootGame();
 		} else {
 //			paraBuscaminasUI.pseudoMain(((JButton) e.getSource()).getName());
-			new Desvelador(tablero).desvelarCasilla((JButton) e.getSource());
+			new Desvelador(tablero).desvelarCasilla((JButton) e.getSource(), null);
 			if (tablero.isGanador()) {
 				
 				

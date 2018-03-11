@@ -22,7 +22,7 @@ public class Desvelador{
 	}
 	
 	public void desocultar(JButton botoncito){
-		Coordenada coordenada = Convertidor.convertirACoordenada(botoncito);
+		Coordenada coordenada = Utiles.convertirACoordenada(botoncito);
 		Casilla casilla = tablero.getCasilla(coordenada);
 		
 		if(casilla.isOculta()){
@@ -61,8 +61,8 @@ public class Desvelador{
 	
 
 	
-	public void desvelarCasilla(JButton casillita) {
-		Coordenada coordenada = Convertidor.convertirACoordenada(casillita);
+	public void desvelarCasilla(JButton casillita, JButton[][] botonera) {
+		Coordenada coordenada = Utiles.convertirACoordenada(casillita);
 		Casilla casilla = tablero.getCasilla(coordenada);
 		assert casilla!=null:"casilla no valida";
 		// TODO llamamos a la casilla pero tambien al *tablero*         //contar las minas que faltan por descubrir, tablero.minas con marcador
@@ -73,7 +73,7 @@ public class Desvelador{
 				if(casilla.getAlrededor()>0){
 					desocultar(casillita);
 				}else{
-					desocultar(casillita);
+					desvelarContigua(coordenada, botonera);
 				}
 				
 				
@@ -85,29 +85,23 @@ public class Desvelador{
 
 
 
-	/*private void desvelarContigua(JButton casillita,Coordenada coordenada,Casilla casilla) {
-		casilla.setOculta(false);
-		casillita.setOpaque(true);
-		casillita.setBackground(Color.GRAY);
-		// comprobar si las casillas marcadas alrededor coincide con el
-		// numero de minas alrededor de la casilla
-		if (tablero.comprobarMarcadas(coordenada)) {
-			for (int i = 0; i < Utiles.OCHO; i++) {
-				Coordenada posicion = tablero.crearCoordenadaAlrededor(coordenada.getPosX(), coordenada.getPosY(), i);
-				if (tablero.isInToLimits(posicion)
-						&& casilla.isOculta()
-						&& !casilla.isMarcada()) {
-					casilla.setOculta(false);
-					casillita.setOpaque(true);
-					casillita.setText(""+tablero.getAlrededor(posicion));
-					if (casilla.getAlrededor() == 0)
-						desvelarContigua(casillita, posicion, casilla);
-				}
+	private void desvelarContigua(Coordenada coordenada, JButton[][] botonera) {
+		Coordenada coordenadaCasilla = new Utiles().convertirACoordenada(botonera[coordenada.getPosX()][coordenada.getPosY()]);
+		Coordenada coordenadas[] = new Utiles().damePosicionAlrededor(coordenadaCasilla.getPosX(), coordenadaCasilla.getPosY());
+		Coordenada[] coordenadasValidas = new Utiles().validaContiguas(coordenadas, Utiles.DIEZ - 1);
+		if (tablero.getCasilla(coordenadaCasilla).getAlrededor() > 0) {
+			desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
+
+		} else {
+			desocultar(botonera[coordenadaCasilla.getPosX()][coordenadaCasilla.getPosY()]);
+			for (int i = 0; i < coordenadasValidas.length; i++) {
+				desvelarContigua(new Coordenada(coordenadasValidas[i].getPosX(), coordenadasValidas[i].getPosY()), botonera);
 			}
 		}
-		
-	}*/
 
+	}
+	
+	
 
 
 

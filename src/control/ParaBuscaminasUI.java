@@ -37,7 +37,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 				JButton pulsado = (JButton) e.getSource();
 				switch (e.getButton()) {
 				case 1:
-					new Desvelador(tablero).desvelarCasilla((JButton) e.getSource());
+					new Desvelador(tablero).desvelarCasilla((JButton) e.getSource(), botones);
 					if (tablero.isGanador()) {
 						
 						
@@ -47,7 +47,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 						
 							for (int i = 0; i < Utiles.DIEZ; i++) {
 								for (int j = 0; j < Utiles.DIEZ; j++) {
-									new Desvelador(tablero).desvelarCasilla(botones[i][j]);
+									new Desvelador(tablero).desvelarCasilla(botones[i][j], botones);
 								}
 							}
 						
