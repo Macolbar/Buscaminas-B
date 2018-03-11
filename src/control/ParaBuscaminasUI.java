@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
 import modelo.Casilla;
+import modelo.Coordenada;
 import modelo.Dificultad;
 import modelo.Tablero;
 import utiles.Utiles;
@@ -46,7 +47,10 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 							for (int i = 0; i < Utiles.DIEZ; i++) {
 								for (int j = 0; j < Utiles.DIEZ; j++) {
 									new Desvelador(tablero).desvelarCasilla(botones[i][j], botones);
+									Coordenada coordenada=new Coordenada(i,j);
+									if(tablero.getCasilla(coordenada).isMarcada()||tablero.getCasilla(coordenada).isOculta()){
 									botones[i][j].setEnabled(false);
+									}
 								}
 							}
 						
