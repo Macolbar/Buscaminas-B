@@ -89,35 +89,7 @@ public class ParaBuscaminasUI extends BuscaminasUI{
 		
 		
 
-				/*botones[i][j].addMouseListener(new MouseAdapter() {
-
-					public void mousePressed(MouseEvent e) {
-						if (e.getButton() == MouseEvent.BUTTON3)
-							new Marcador().marcarCasilla((JButton) e.getSource(), tablero);
-						
-					}
-				});
-
-				botones[i][j].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						
-						new Desvelador(tablero).desvelarCasilla((JButton) arg0.getSource());
-						if (tablero.isGanador()) {
-							
-							
-						}
-						if(tablero.isPerdedor()){
-							contenedor.setBackground(Color.RED);
-								
-							
-						}
-//						comprobar ganador
-
-					}
-				});
-			}
-		}*/
-	
+			
 		
 
 	
